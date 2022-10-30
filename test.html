@@ -1,0 +1,82 @@
+<html>
+
+<head>
+	<title>Test</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="test.css" />
+	<link rel="stylesheet" type="text/css" href="tbl-header.css" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="row mt-4 mb-4">
+			<div class="col-6">
+				<section>
+					<h1>Function / Formula</h1>
+					<span class="label">f(x)=</span>
+					<input type="text" class="formula" id="function" value="x * x" />
+				</section>
+			</div>
+			<div class="col">
+				<section>
+					<h1>Input / Domain</h1>
+					<div>
+						<span class="field"><span class="label">Start</span><input type="number" class="domain" id="start"
+								value="-10" /></span>
+						<span class="field"><span class="label">End</span><input type="number" class="domain" id="end"
+								value="10" /></span>
+						<span class="field"><span class="label">Step</span><input type="number" class="domain" id="step"
+								value="1" /></span>
+					</div>
+				</section>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<section>
+					<h1>Graph</h1>
+					<div id="graph-container">
+						<div id="graph"></div>
+					</div>
+				</section>
+			</div>
+			<div class="col">
+				<section>
+					<h1>Output / Range</h1>
+					<div class="tbl-header">
+						<table cellpadding="0" cellspacing="0" border="0">
+							<thead>
+								<tr>
+									<th>x</th>
+									<th>f(x)</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="tbl-content">
+						<table cellpadding="0" cellspacing="0" border="0">
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</section>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<button type="button" id="btn-run" class="btn btn-primary mt-4">Run</button>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"
+	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.3.1/math.js"></script>
+<script type="text/javascript" src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
+<script type="text/javascript" src="tbl-header.js"></script>
+<script type="text/javascript" src="function.js"></script>
+<script type="text/javascript" src="test.js"></script>
+
+</html>

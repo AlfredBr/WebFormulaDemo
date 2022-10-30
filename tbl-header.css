@@ -1,0 +1,67 @@
+h1 {
+	font-size: 30px;
+	color: #000;
+	/* text-transform: uppercase; */
+	font-weight: 300;
+	/* text-align: center; */
+	margin-bottom: 15px;
+}
+
+table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+.tbl-header {
+	background-color: gainsboro;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
+
+.tbl-content {
+	max-height: 32vh;
+	overflow-x: auto;
+	margin-top: 0px;
+	border-bottom: 2px solid gainsboro;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	/* border: 1px solid gainsboro; */
+}
+
+th {
+	padding: 10px 15px;
+	text-align: center;
+	font-weight: 500;
+	font-size: 20px;
+	color: #000;
+	/* text-transform: uppercase; */
+}
+
+td {
+	padding: 5px 15px;
+	border-top: 1px solid gainsboro;
+	border-left: 2px solid gainsboro;
+	border-right: 2px solid gainsboro;
+	text-align: right;
+	vertical-align: middle;
+	font-weight: 300;
+	font-size: 20px;
+	color: #000;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: gainsboro;
+	border-bottom-right-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #ccc;
+	border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: #aaa;
+}
