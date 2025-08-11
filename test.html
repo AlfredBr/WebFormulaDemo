@@ -2,20 +2,48 @@
 
 <head>
 	<title>Test</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-		integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="test.css" />
 	<link rel="stylesheet" type="text/css" href="tbl-header.css" />
 </head>
 
 <body>
-	<div class="container">
+	<div class="container instrument">
+		<div class="instrument-header d-flex align-items-center justify-content-between">
+			<div class="brand">
+				<span class="model">Formula Analyzer</span>
+				<span class="series">FA-3000</span>
+			</div>
+			<div class="status d-flex align-items-center gap-3">
+				<div class="led led-green" title="Ready"></div>
+				<div class="led led-amber" title="Sampling"></div>
+				<div class="led led-red" title="Fault"></div>
+			</div>
+		</div>
 		<div class="row mt-4 mb-4">
 			<div class="col-6">
 				<section>
 					<h1>Function / Formula</h1>
 					<span class="label">f(x)=</span>
 					<input type="text" class="formula" id="function" value="x * x" />
+					<div class="mt-2">
+						<span class="label">Examples</span>
+						<select id="example-select" class="domain">
+							<option value="">Choose example…</option>
+							<option value="x^2" data-start="-10" data-end="10" data-step="0.1">x^2</option>
+							<option value="sin(x)" data-start="-6.283" data-end="6.283" data-step="0.05">sin(x)</option>
+							<option value="cos(x) + x^2/8" data-start="-8" data-end="8" data-step="0.1">cos(x) + x^2/8</option>
+							<option value="exp(-x^2)" data-start="-4" data-end="4" data-step="0.05">exp(-x^2)</option>
+							<option value="ln(x + 1)" data-start="-0.9" data-end="10" data-step="0.1">ln(x + 1)</option>
+							<option value="sqrt(abs(x))" data-start="-10" data-end="10" data-step="0.1">sqrt(abs(x))</option>
+							<option value="tanh(x)" data-start="-5" data-end="5" data-step="0.05">tanh(x)</option>
+							<option value="sin(x)/x" data-start="-20" data-end="20" data-step="0.1">sin(x)/x</option>
+							<option value="x^3 - 3*x" data-start="-3" data-end="3" data-step="0.1">x^3 - 3x</option>
+							<option value="sin(x)*cos(3*x)" data-start="-10" data-end="10" data-step="0.05">sin(x)*cos(3x)</option>
+						</select>
+					</div>
+					<div id="formula-help" class="help-text">Use: x, + - * / ^, parentheses. Functions: sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, exp, ln, log10, sqrt, abs, pow. Constants: pi, e.</div>
+					<div id="formula-error" class="error-text" role="alert" aria-live="polite"></div>
 				</section>
 			</div>
 			<div class="col">
@@ -26,7 +54,7 @@
 								value="-10" /></span>
 						<span class="field"><span class="label">End</span><input type="number" class="domain" id="end"
 								value="10" /></span>
-						<span class="field"><span class="label">Step</span><input type="number" class="domain" id="step"
+						<span class="field"><span class="label">Step</span><input type="number" class="domain" id="step" step="0.1"
 								value="1" /></span>
 					</div>
 				</section>
@@ -37,7 +65,10 @@
 				<section>
 					<h1>Graph</h1>
 					<div id="graph-container">
-						<div id="graph"></div>
+						<div id="graph"><!-- three.js canvas will be injected here --></div>
+						<div id="readout" class="readout">x: 0.00, f(x): 0.00</div>
+						<div class="axis-label x-label">x</div>
+						<div class="axis-label y-label">f(x)</div>
 					</div>
 				</section>
 			</div>
@@ -73,9 +104,10 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.1.min.js"
 	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.3.1/math.js"></script>
-<script type="text/javascript" src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
+<!-- three.js for GPU-accelerated canvas rendering -->
+<script type="text/javascript" src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
 <script type="text/javascript" src="tbl-header.js"></script>
+<script type="text/javascript" src="graph.js"></script>
 <script type="text/javascript" src="function.js"></script>
 <script type="text/javascript" src="test.js"></script>
 
